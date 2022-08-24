@@ -11,16 +11,18 @@ public class HotPotato {
         ArrayDeque<String> kidsNames = new ArrayDeque<>();
 
         for (String kid : kids) {
-            kidsNames.add(kid);
+            kidsNames.offer(kid);
         }
 
         int kidPosition = Integer.parseInt(scanner.nextLine());
 
         while (kidsNames.size() > 1) {
-            for (int i = kidPosition-1; i < kidsNames.size(); i++) {
-                System.out.println("Removed " + kidsNames.poll());
+            for (int i = 1; i < kidPosition; i++) {
+                kidsNames.offer(kidsNames.poll());
             }
+            System.out.println("Removed " + kidsNames.poll());
         }
+
         System.out.println("Last is " + kidsNames.poll());
     }
 }
