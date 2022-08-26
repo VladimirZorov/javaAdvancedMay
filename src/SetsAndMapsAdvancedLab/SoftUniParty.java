@@ -9,15 +9,26 @@ public class SoftUniParty {
         String input = scanner.nextLine();
         LinkedHashSet<String> guests = new LinkedHashSet<>();
         LinkedHashSet<String> guestList = new LinkedHashSet<>();
+        LinkedHashSet<String> dontComeGuest = new LinkedHashSet<>();
 
+
+        while (!input.equals("PARTY")) {
+            guests.add(input);
+            input = scanner.nextLine();
+        }
         while (!input.equals("END")) {
-            while (!input.equals("PARTY")) {
-                guests.add(input);
-                input = scanner.nextLine();
-            }
             guestList.add(input);
             input = scanner.nextLine();
         }
-        System.out.println();
+
+        for(String guest : guests){
+            if (!guestList.contains(guest)) {
+                dontComeGuest.add(guest);
+            }
+        }
+
+
+        System.out.println(dontComeGuest.size());
+        dontComeGuest.forEach(System.out::println);
     }
 }
