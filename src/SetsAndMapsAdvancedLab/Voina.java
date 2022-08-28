@@ -17,7 +17,8 @@ public class Voina {
             secondPlayerCards.add(Integer.parseInt(secondPlayer[i]));
         }
 
-        while (!firstPlayerCards.isEmpty() && !secondPlayerCards.isEmpty()) {
+        int n = 50;
+        while (n-- >0 ) {
             int firstNumber = firstPlayerCards.iterator().next();
             firstPlayerCards.remove(firstNumber);
             int secondNumber = secondPlayerCards.iterator().next();
@@ -29,15 +30,22 @@ public class Voina {
             } else if (secondNumber > firstNumber) {
                 secondPlayerCards.add(firstNumber);
                 secondPlayerCards.add(secondNumber);
+            } else if (secondNumber == firstNumber) {
+                firstPlayerCards.add(firstNumber);
+                secondPlayerCards.add(secondNumber);
+            }
+            if (firstPlayerCards.isEmpty()
+                    || secondPlayerCards.isEmpty()) {
+                break;
             }
         }
+            if (firstPlayerCards.size() ==  secondPlayerCards.size()) {
+                System.out.println("Draw!");
+            } else if (firstPlayerCards.size() < secondPlayerCards.size()) {
+                System.out.println("Second player win!");
+            } else if (secondPlayerCards.size() < firstPlayerCards.size()) {
+                System.out.println("First player win!");
+            }
 
-        if (firstPlayerCards.size() == 0 && secondPlayerCards.size() == 0) {
-            System.out.println("Draw!");
-        }else if (firstPlayerCards.size() == 0) {
-            System.out.println("Second player win!");
-        }else if (secondPlayerCards.size() == 0) {
-            System.out.println("First player win!");
-        }
     }
 }
