@@ -17,6 +17,19 @@ public class AverageStudentsGrades {
 
         }
 
-        System.out.println();
+        for (Map.Entry<String, ArrayList<Double>> entry : students.entrySet()) {
+            System.out.print(entry.getKey() + " -> ");
+            double avg = 0;
+            for (Double s : entry.getValue()) {
+                System.out.printf("%.2f ", s);
+                avg += s;
+            }
+//            double avg = entry.getValue().stream()
+//                    .mapToDouble(Double::doubleValue)
+//                    .average()
+//                    .getAsDouble();
+            System.out.printf("(avg: %.2f)%n", avg / entry.getValue().size());
+        }
     }
+
 }
