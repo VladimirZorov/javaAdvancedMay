@@ -6,7 +6,7 @@ public class ProductShop {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Map<String, Map<String, Double>> shop = new TreeMap<>();
+        Map<String, Map<String, Double>> shop = new LinkedHashMap<>();
 
         String input = scanner.nextLine();
 
