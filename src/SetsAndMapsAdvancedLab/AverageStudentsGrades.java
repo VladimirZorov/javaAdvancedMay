@@ -24,10 +24,7 @@ public class AverageStudentsGrades {
                 System.out.printf("%.2f ", s);
                 avg += s;
             }
-//            double avg = entry.getValue().stream()
-//                    .mapToDouble(Double::doubleValue)
-//                    .average()
-//                    .getAsDouble();
+
             System.out.printf("(avg: %.2f)%n", avg / entry.getValue().size());
         }
     }

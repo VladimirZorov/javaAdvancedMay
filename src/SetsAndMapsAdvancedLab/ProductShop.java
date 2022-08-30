@@ -1,8 +1,6 @@
 package SetsAndMapsAdvancedLab;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class ProductShop {
     public static void main(String[] args) {
@@ -18,14 +16,16 @@ public class ProductShop {
             String product = commands[1];
             double price = Double.parseDouble(commands[2]);
 
-            shop.putIfAbsent(store, new TreeMap<>());
+            shop.putIfAbsent(store, new LinkedHashMap<>());
             shop.get(store).putIfAbsent(product, price);
 
             input = scanner.nextLine();
         }
 
-
-
-        System.out.println();
+        shop.forEach((key, value) -> {
+            System.out.printf("%s->%n", key);
+            value.forEach((key1, value1) ->
+                    System.out.printf("Product: %s, Price: %.1f%n", key1, value1));
+        });
     }
 }
