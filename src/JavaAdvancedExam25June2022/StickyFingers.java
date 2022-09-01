@@ -7,7 +7,7 @@ public class StickyFingers {
         Scanner scanner = new Scanner(System.in);
 
         int fieldSize = Integer.parseInt(scanner.nextLine());
-        String[] commands = scanner.nextLine().split(", ");
+        String[] commands = scanner.nextLine().split(",");
 
         String[][] field = new String[fieldSize][fieldSize];
 
@@ -21,7 +21,7 @@ public class StickyFingers {
             for (int j = 0; j < fieldSize; j++) {
                 field[i][j] = fieldChars[j];
 
-                if (field.equals("D")) {
+                if (field[i][j].equals("D")) {
                     row = i;
                     coll = j;
                 }
@@ -42,10 +42,28 @@ public class StickyFingers {
                     }
                     break;
                 case "down":
+                    if (row + 1 <= fieldSize) {
+                        field[row][coll] = "+";
+                        row++;
+                    } else {
+                        System.out.println("You cannot leave the town, there is police outside!");
+                    }
                     break;
                 case "left":
+                    if (coll - 1 >= 0) {
+                        field[row][coll] = "+";
+                        coll--;
+                    } else {
+                        System.out.println("You cannot leave the town, there is police outside!");
+                    }
                     break;
                 case "right":
+                if (coll + 1 <= fieldSize) {
+                    field[row][coll] = "+";
+                    coll++;
+                } else {
+                    System.out.println("You cannot leave the town, there is police outside!");
+                }
                     break;
             }
 
