@@ -1,4 +1,4 @@
-package workout;
+package JavaAdvancedExam25June2022.workout;
 
 public class Exercise {
     private String name;

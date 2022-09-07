@@ -1,4 +1,4 @@
-package workout;
+package JavaAdvancedExam25June2022.workout;
 
 public class Main {
     public static void main(String[] args) {

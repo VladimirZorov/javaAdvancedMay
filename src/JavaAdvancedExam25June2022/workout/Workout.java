@@ -1,4 +1,4 @@
-package workout;
+package JavaAdvancedExam25June2022.workout;
 
 import java.util.ArrayList;
 import java.util.List;
