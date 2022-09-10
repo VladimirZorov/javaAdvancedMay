@@ -30,9 +30,9 @@ public class ThroneConquering {
         boolean reachHelan = false;
         boolean deadParis = false;
 
-        String input = scanner.nextLine();
-        while (!input.isEmpty() || !reachHelan || !deadParis) {
-            String[] command = input.split(" ");
+
+        while (true && !reachHelan && !deadParis) {
+            String[] command = scanner.nextLine().split(" ");
             switch (command[0]) {
                 case "up":
                     if (rowP - 1 >= 0) {
@@ -57,7 +57,7 @@ public class ThroneConquering {
                     if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
                         tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
                     }
-//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
 
                     break;
                 case "down":
@@ -83,7 +83,7 @@ public class ThroneConquering {
                     if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
                         tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
                     }
-//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
 
                     break;
                 case "left":
@@ -109,7 +109,7 @@ public class ThroneConquering {
                     if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
                         tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
                     }
-//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
 
                     break;
                 case "right":
@@ -135,12 +135,12 @@ public class ThroneConquering {
                     if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
                         tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
                     }
-//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
 
                     break;
             }
 
-            input = scanner.nextLine();
+
         }
 
 
@@ -150,6 +150,11 @@ public class ThroneConquering {
                 System.out.println(String.join("", sparta[i]));
             }
 
+        } else {
+            System.out.printf("Paris died at %d;%d.%n",rowP, collP);
+            for (int i = 0; i < sparta.length; i++) {
+                System.out.println(String.join("", sparta[i]));
+            }
         }
     }
 
