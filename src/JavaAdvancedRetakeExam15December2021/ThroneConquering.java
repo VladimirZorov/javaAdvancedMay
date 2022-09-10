@@ -3,6 +3,7 @@ package JavaAdvancedRetakeExam15December2021;
 import java.util.Scanner;
 
 public class ThroneConquering {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -26,25 +27,116 @@ public class ThroneConquering {
             }
         }
 
+        boolean reachHelan = false;
+        boolean deadParis = false;
+
         String input = scanner.nextLine();
-        while (!input.isEmpty()) {
+        while (!input.isEmpty() || !reachHelan || !deadParis) {
             String[] command = input.split(" ");
             switch (command[0]) {
-                case"up":
+                case "up":
                     if (rowP - 1 >= 0) {
                         sparta[rowP][collP] = "-";
                         rowP--;
-                        if (sparta[rowP][collP].equals("S"))
-                        sparta[rowP][collP] = "P";
+                        energy--;
+                        switch (sparta[rowP][collP]) {
+                            case "H":
+                                sparta[rowP][collP] = "-";
+                                reachHelan = true;
+                                break;
+                            case"S":
+                                tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                                break;
+                            case"-":
+                                sparta[rowP][collP] = "P";
+                                break;
+                        }
+                    } else {
                         energy--;
                     }
+                    if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
+                        tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                    }
+//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+
                     break;
                 case "down":
+                    if (rowP + 1 <sizeSparta) {
+                        sparta[rowP][collP] = "-";
+                        rowP++;
+                        energy--;
+                        switch (sparta[rowP][collP]) {
+                            case "H":
+                                sparta[rowP][collP] = "-";
+                                reachHelan = true;
+                                break;
+                            case"S":
+                                tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                                break;
+                            case"-":
+                                sparta[rowP][collP] = "P";
+                                break;
+                        }
+                    } else {
+                        energy--;
+                    }
+                    if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
+                        tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                    }
+//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
 
                     break;
                 case "left":
+                    if (collP - 1 >=0) {
+                        sparta[rowP][collP] = "-";
+                        collP--;
+                        energy--;
+                        switch (sparta[rowP][collP]) {
+                            case "H":
+                                sparta[rowP][collP] = "-";
+                                reachHelan = true;
+                                break;
+                            case"S":
+                                tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                                break;
+                            case"-":
+                                sparta[rowP][collP] = "P";
+                                break;
+                        }
+                    } else {
+                        energy--;
+                    }
+                    if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
+                        tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                    }
+//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+
                     break;
                 case "right":
+                    if (collP + 1 <sizeSparta) {
+                        sparta[rowP][collP] = "-";
+                        collP++;
+                        energy--;
+                        switch (sparta[rowP][collP]) {
+                            case "H":
+                                sparta[rowP][collP] = "-";
+                                reachHelan = true;
+                                break;
+                            case"S":
+                                tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                                break;
+                            case"-":
+                                sparta[rowP][collP] = "P";
+                                break;
+                        }
+                    } else {
+                        energy--;
+                    }
+                    if (sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])].equals("P")){
+                        tryToKillEnemy(sparta, energy, rowP, collP, deadParis);
+                    }
+//                    sparta[Integer.parseInt(command[1])][Integer.parseInt(command[2])] = "S";
+
                     break;
             }
 
@@ -52,6 +144,29 @@ public class ThroneConquering {
         }
 
 
-        System.out.println(sparta);
+        if (!deadParis) {
+            System.out.printf("Paris has successfully abducted Helen! Energy left: %d%n",energy);
+            for (int i = 0; i < sparta.length; i++) {
+                System.out.println(String.join("", sparta[i]));
+            }
+
+        }
     }
+
+    private static void tryToKillEnemy
+            (String sparta[][], int energy, int rowP, int collP,  boolean deadParis) {
+            energy -= 2;
+            if (energy > 0) {
+                sparta[rowP][collP] = "P";
+            } else {
+                sparta[rowP][collP] = "X";
+                System.out.printf("Paris died at %d;%d.%n",rowP, collP);
+                for (int i = 0; i < sparta.length; i++) {
+                    System.out.println(String.join("", sparta[i]));
+                }
+                deadParis = true;
+            }
+        }
+
+
 }
