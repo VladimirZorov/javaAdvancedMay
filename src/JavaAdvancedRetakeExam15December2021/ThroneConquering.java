@@ -31,7 +31,7 @@ public class ThroneConquering {
         boolean deadParis = false;
 
 
-        while (true && !reachHelan && !deadParis) {
+        while (true && !reachHelan && !deadParis ) {
             String[] command = scanner.nextLine().split(" ");
             switch (command[0]) {
                 case "up":
