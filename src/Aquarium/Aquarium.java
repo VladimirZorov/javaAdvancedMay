@@ -42,7 +42,7 @@ public class Aquarium {
     public boolean remove(String name) {
         for (Fish fishIn : fishInPool) {
             if (fishIn.getName().equals(name)) {
-                fishInPool.remove(this.name);
+                fishInPool.remove(fishIn);
                 return true;
             }
         }
