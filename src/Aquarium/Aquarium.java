@@ -2,18 +2,19 @@ package Aquarium;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class Aquarium {
     private String name;
     private int capacity;
     private int size;
-    private Collection<String> fishInPool;
+    private List<Fish> fishInPool;
 
     public Aquarium(String name, int capacity, int size) {
         this.name = name;
         this.capacity = capacity;
         this.size = size;
-        this.fishInPool = new ArrayList<String>();
+        this.fishInPool = new ArrayList<Fish>();
     }
 
     public String getName() {
@@ -28,23 +29,19 @@ public class Aquarium {
         return size;
     }
 
-    public Collection<String> getFishInPool() {
+    public List<Fish> getFishInPool() {
         return fishInPool;
     }
 
     public void add(Fish fish) {
-        if (fishInPool.size() < capacity) {
-            for (String fishIn : fishInPool) {
-                if (!fishIn.equals(name)) {
-                    fishInPool.add(this.name);
-                }
-            }
+        if (!fishInPool.contains(fish)&&fishInPool.size()+1<capacity){
+            this.fishInPool.add(fish);
         }
     }
 
     public boolean remove(String name) {
-        for (String fishIn : fishInPool) {
-            if (!fishIn.equals(name)) {
+        for (Fish fishIn : fishInPool) {
+            if (fishIn.getName().equals(name)) {
                 fishInPool.remove(this.name);
                 return true;
             }
@@ -53,7 +50,7 @@ public class Aquarium {
     }
 
     public String findFish(String name){
-        for (String fishIn : fishInPool) {
+        for (Fish fishIn : fishInPool) {
             if (!fishIn.equals(name)) {
                 fishInPool.remove(this.name);
                 return this.name;
@@ -64,7 +61,21 @@ public class Aquarium {
         return name;
     }
 
-    public void report() {
-        System.out.println("Aquarium Info:");
+
+
+
+
+    public String report() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(String.format("Aquarium: %s ^ Size: %d",this.name, this.size));
+        builder.append(System.lineSeparator());
+
+        for (Fish fi : fishInPool) {
+            builder.append(fi);
+            builder.append(System.lineSeparator());
+
+        }
+
+        return builder.toString().trim();
     }
 }

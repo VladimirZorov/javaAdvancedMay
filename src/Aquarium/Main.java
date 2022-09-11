@@ -33,7 +33,7 @@ public class Main {
         aquarium.add(thirdFish);
 
         // Print Aquarium report
-//        System.out.println(aquarium.report());
+        System.out.println(aquarium.report());
 
         //Aquarium Info:
         //Aquarium: Ocean ^ Size: 15
