@@ -49,16 +49,13 @@ public class Aquarium {
         return false;
     }
 
-    public String findFish(String name){
-        for (Fish fishIn : fishInPool) {
-            if (!fishIn.equals(name)) {
-                fishInPool.remove(this.name);
-                return this.name;
-            } else {
-                return null;
+    public Fish findFish(String name){
+        for (Fish fishIn : this.fishInPool) {
+            if (!fishIn.getName().equals(this.name)) {
+                return fishIn;
             }
         }
-        return name;
+       return null;
     }
 
 
