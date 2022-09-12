@@ -1,8 +1,8 @@
-package Aquarium;
+package JavaAdvancedRetakeExam15December2021.Aquarium;
 
 public class Main {
     public static void main(String[] args) {
-        // Initialize Aquarium
+        // Initialize JavaAdvancedRetakeExam15December2021.Aquarium
         Aquarium aquarium = new Aquarium("Ocean", 5, 15);
         // Initialize Fish
         Fish fish = new Fish("Goldy", "gold", 4);
@@ -32,11 +32,11 @@ public class Main {
         aquarium.add(secondFish);
         aquarium.add(thirdFish);
 
-        // Print Aquarium report
+        // Print JavaAdvancedRetakeExam15December2021.Aquarium report
         System.out.println(aquarium.report());
 
-        //Aquarium Info:
-        //Aquarium: Ocean ^ Size: 15
+        //JavaAdvancedRetakeExam15December2021.Aquarium Info:
+        //JavaAdvancedRetakeExam15December2021.Aquarium: Ocean ^ Size: 15
         //Fish: Dory
         //Color: blue
         //Number of fins: 2

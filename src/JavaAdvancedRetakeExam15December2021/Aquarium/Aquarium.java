@@ -1,7 +1,6 @@
-package Aquarium;
+package JavaAdvancedRetakeExam15December2021.Aquarium;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Aquarium {
@@ -64,7 +63,7 @@ public class Aquarium {
 
     public String report() {
         StringBuilder builder = new StringBuilder();
-        builder.append(String.format("Aquarium: %s ^ Size: %d",this.name, this.size));
+        builder.append(String.format("JavaAdvancedRetakeExam15December2021.Aquarium: %s ^ Size: %d",this.name, this.size));
         builder.append(System.lineSeparator());
 
         for (Fish fi : fishInPool) {

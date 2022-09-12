@@ -1,4 +1,4 @@
-package Aquarium;
+package JavaAdvancedRetakeExam15December2021.Aquarium;
 
 public class Fish {
     private String name;
