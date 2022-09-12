@@ -15,18 +15,18 @@ public class Pastryshop {
         ArrayDeque<Integer> ingredientQueue = new ArrayDeque<>();
 
         for (int liq : liquids) {
-            liquidSteack.push(liq);
+            liquidSteack.offer(liq);
         }
         for (int ing : ingredients) {
-            ingredientQueue.offer(ing);
+            ingredientQueue.push(ing);
         }
 
-        Map<String, Integer> food = new HashMap<>();
+        Map<String, Integer> food = new LinkedHashMap<>();
 
         food.put("Biscuit", 0);
         food.put("Cake", 0);
-        food.put("Pastry", 0);
         food.put("Pie", 0);
+        food.put("Pastry", 0);
 
         while (!liquidSteack.isEmpty() && !ingredientQueue.isEmpty()) {
             int liquidToCook = liquidSteack.peek();
@@ -58,12 +58,48 @@ public class Pastryshop {
                 default:
                     liquidSteack.pop();
                     ingredientQueue.poll();
-                    ingredientQueue.addFirst(ingredientToCook+3);
+                    ingredientQueue.addFirst(ingredientToCook + 3);
             }
         }
 
 
-        food.forEach((s, integer) -> integer.compareTo(0));
-        System.out.println("Great! You succeeded in cooking all the food!");
+        if (!food.containsValue(0)) {
+            System.out.println("Great! You succeeded in cooking all the food!");
+        } else {
+            System.out.println("What a pity! You didn't have enough materials to cook everything.");
+        }
+
+        if (liquidSteack.isEmpty()) {
+            System.out.print("Liquids left: none");
+        } else {
+            System.out.printf("Liquids left: %n");
+            while (!liquidSteack.isEmpty()){
+                System.out.print(liquidSteack.poll());
+                if (!liquidSteack.isEmpty()) {
+                    System.out.print(", ");
+                }
+            }
+        }
+
+        if (ingredientQueue.isEmpty()) {
+            System.out.println();
+            System.out.print("Ingredients left: none");
+        } else {
+            System.out.printf("%nIngredients left: ");
+            while (!ingredientQueue.isEmpty()) {
+                System.out.print(ingredientQueue.poll());
+                if (!ingredientQueue.isEmpty()){
+                    System.out.print(", ");
+                }
+            }
+        }
+
+        if(ingredientQueue.isEmpty() && liquidSteack.isEmpty()) {
+            System.out.println();
+            food.entrySet().forEach(entry -> {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            });
+        }
+
     }
 }
