@@ -72,7 +72,7 @@ public class Pastryshop {
         if (liquidSteack.isEmpty()) {
             System.out.print("Liquids left: none");
         } else {
-            System.out.printf("Liquids left: %n");
+            System.out.printf("Liquids left: ");
             while (!liquidSteack.isEmpty()){
                 System.out.print(liquidSteack.poll());
                 if (!liquidSteack.isEmpty()) {
@@ -85,7 +85,8 @@ public class Pastryshop {
             System.out.println();
             System.out.print("Ingredients left: none");
         } else {
-            System.out.printf("%nIngredients left: ");
+            System.out.println();
+            System.out.printf("Ingredients left: ");
             while (!ingredientQueue.isEmpty()) {
                 System.out.print(ingredientQueue.poll());
                 if (!ingredientQueue.isEmpty()){
