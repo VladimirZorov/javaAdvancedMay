@@ -31,20 +31,30 @@ public class Cafe {
     }
 
     public Employee getOldestEmployee() {
+        for (Employee emp : employees) {
+            int max = Integer.MIN_VALUE;
+    if (emp.getAge()> max ) {
 
+    }
+        }
         return null;
     }
 
     public Employee getEmployee(String name) {
-
-        return null;
+for (Employee emp : employees){
+    if (emp.getName().equals(this.name)) {
+        return employees.get(0);
+    }
+}
+        return employees.get(0);
     }
 
     public int getCount() {
         return employees.size();
     }
 
-    public String report(){
-        return String.format("Employees working at Cafe %s: %n");
+    public String report() {
+        return String.format("Employees working at Cafe %s:" + "%n"
+       + employees.get(0) +"%n"+ employees.get(1), this.name );
     }
 }

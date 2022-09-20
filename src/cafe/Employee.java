@@ -12,6 +12,18 @@ public class Employee {
         this.country = country;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     @Override
     public String toString() {
         return String.format("Employee: %s, %d from %s", this.name, this.age, this.country);
