@@ -33,20 +33,22 @@ public class Cafe {
     public Employee getOldestEmployee() {
         for (Employee emp : employees) {
             int max = Integer.MIN_VALUE;
-    if (emp.getAge()> max ) {
+            if (emp.getAge() > max) {
 
-    }
+            }
         }
         return null;
     }
 
     public Employee getEmployee(String name) {
-for (Employee emp : employees){
-    if (emp.getName().equals(this.name)) {
-        return employees.get(0);
-    }
-}
-        return employees.get(0);
+        Employee searchEmp = null;
+        for (Employee emp : employees) {
+            if (emp.getName().equals(name)) {
+                searchEmp = emp;
+            }
+        }
+
+        return searchEmp;
     }
 
     public int getCount() {
@@ -55,6 +57,6 @@ for (Employee emp : employees){
 
     public String report() {
         return String.format("Employees working at Cafe %s:" + "%n"
-       + employees.get(0) +"%n"+ employees.get(1), this.name );
+                + employees.get(0) + "%n" + employees.get(1), this.name);
     }
 }
